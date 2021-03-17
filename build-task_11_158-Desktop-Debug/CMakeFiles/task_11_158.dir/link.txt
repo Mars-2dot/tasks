@@ -1,1 +1,0 @@
-/usr/bin/g++ -g CMakeFiles/task_11_158.dir/main.cpp.o -o task_11_158 
