@@ -4,8 +4,10 @@ project(benchmark LANGUAGES CXX)
 
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
-find_package(benchmark REQUIRED)
+set(BENCHMARK_PROJECT_LOCATION ../3rd/benchmark)
+include(../3rd/ExternalProjectGbenchmark.cmake)
 
+#find_package(benchmark REQUIRED)
 add_executable(benchmark
    BM_task_16_8.cpp
    BM_Task_7_33.cpp
@@ -16,4 +18,4 @@ add_executable(benchmark
    benchmark.h
     )
 
-target_link_libraries(benchmark benchmark::benchmark)
+target_link_libraries(benchmark ${GBENCHMARK_LIBRARY})
