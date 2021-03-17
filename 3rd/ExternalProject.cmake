@@ -21,8 +21,8 @@ ExternalProject_Get_Property(googletest binary_dir)
 if(UNIX)
 set(GTEST_LIBRARY_PATH ${binary_dir}/lib/${CMAKE_FIND_LIBRARY_PREFIXES}gtest.a)
 else ()
-set(GTEST_LIBRARY_PATH ${binary_dir}/lib/${CMAKE_FIND_LIBRARY_PREFIXES}gtest.lib)
-endif
+set(GTEST_LIBRARY_PATH ${binary_dir}/lib/${CMAKE_FIND_LIBRARY_PREFIXES}/Debug/gtestd.lib)
+endif ()
 
 set(GTEST_LIBRARY gtest)
 add_library(${GTEST_LIBRARY} UNKNOWN IMPORTED)
@@ -34,8 +34,8 @@ add_dependencies(${GTEST_LIBRARY} googletest)
 if(UNIX)
 set(GTEST_MAIN_LIBRARY_PATH ${binary_dir}/lib/${CMAKE_FIND_LIBRARY_PREFIXES}gtest_main.a)
 else ()
-set(GTEST_MAIN_LIBRARY_PATH ${binary_dir}/lib/${CMAKE_FIND_LIBRARY_PREFIXES}gtest_main.lib)
-endif
+set(GTEST_MAIN_LIBRARY_PATH ${binary_dir}/lib/${CMAKE_FIND_LIBRARY_PREFIXES}/Debug/gtest_maind.lib)
+endif ()
 
 set(GTEST_MAIN_LIBRARY gtest_main)
 add_library(${GTEST_MAIN_LIBRARY} UNKNOWN IMPORTED)
@@ -47,8 +47,8 @@ add_dependencies(${GTEST_MAIN_LIBRARY} googletest)
 if(UNIX)
 set(GMOCK_LIBRARY_PATH ${binary_dir}/googlemock/${CMAKE_FIND_LIBRARY_PREFIXES}gmock.a)
 else ()
-set(GMOCK_LIBRARY_PATH ${binary_dir}/googlemock/${CMAKE_FIND_LIBRARY_PREFIXES}gmock.lib)
-endif
+set(GMOCK_LIBRARY_PATH ${binary_dir}/googlemock/${CMAKE_FIND_LIBRARY_PREFIXES}/Debug/gmockd.lib)
+endif ()
 
 set(GMOCK_LIBRARY gmock)
 add_library(${GMOCK_LIBRARY} UNKNOWN IMPORTED)
@@ -60,8 +60,8 @@ add_dependencies(${GMOCK_LIBRARY} googletest)
 if(UNIX)
 set(GMOCK_MAIN_LIBRARY_PATH ${binary_dir}/googlemock/${CMAKE_FIND_LIBRARY_PREFIXES}gmock_main.a)
 else ()
-set(GMOCK_MAIN_LIBRARY_PATH ${binary_dir}/googlemock/${CMAKE_FIND_LIBRARY_PREFIXES}gmock_main.lib)
-endif
+set(GMOCK_MAIN_LIBRARY_PATH ${binary_dir}/googlemock/${CMAKE_FIND_LIBRARY_PREFIXES}/Debug/gmock_maind.lib)
+endif ()
 
 set(GMOCK_MAIN_LIBRARY gmock_main)
 add_library(${GMOCK_MAIN_LIBRARY} UNKNOWN IMPORTED)
@@ -70,3 +70,20 @@ set_target_properties(${GMOCK_MAIN_LIBRARY} PROPERTIES
     "IMPORTED_LINK_INTERFACE_LIBRARIES" "${CMAKE_THREAD_LIBS_INIT}"
     "INTERFACE_INCLUDE_DIRECTORIES" "${GMOCK_INCLUDE_DIRS}")
 add_dependencies(${GMOCK_MAIN_LIBRARY} ${GTEST_LIBRARY})
+
+ExternalProject_Add (boost
+    PREFIX ${CMAKE_CURRENT_BINARY_DIR}/boost
+    GIT_REPOSITORY git at github.com:boostorg/boost.git
+    GIT_TAG boost-${BOOST_VERSION}
+    GIT_PROGRESS 1
+    UPDATE_COMMAND ${BOOST_BOOTSTRAP_CMD}
+    CONFIGURE_COMMAND ""
+    BUILD_COMMAND ${BOOST_BUILD_CMD} stage
+    INSTALL_COMMAND ""
+    LOG_DOWNLOAD 1
+    LOG_UPDATE 1
+    LOG_CONFIGURE 1
+    LOG_BUILD 1
+    LOG_INSTALL 1
+)
+
