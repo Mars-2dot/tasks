@@ -1,10 +1,16 @@
 # tasks
 ---  
+
+# **Dependencies**  
+1) Googletest
+2) GoogleBenchmark
+3) Boost::program_options
 # **Build**  
 ## Unix   
 ```sh 
 git clone https://github.com/Mars-2dot/tasks.git  
 cd tasks  
+git submodule update
 mkdir build && cd build  
 cmake ..  
 make  
@@ -14,8 +20,7 @@ To work, you need to manually install googletest.
 ```sh
 git clone https://github.com/Mars-2dot/tasks.git  
 cd tasks
-cd Modules
-git clone https://github.com/google/googletest.git && cd googletest  
+git submodule update
 mkdir build && cd build
 cmake ..  
 ```
@@ -26,10 +31,4 @@ mkdir build && cd build
 cmake ..  
 ```
 Build a project in any convenient way.
-# **Usage**  
-Directory with tasks - 'main'  
-Directory with tests - 'tests'  
-These directories will contain executable files  
-
-
 
