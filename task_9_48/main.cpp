@@ -54,8 +54,6 @@ int* Task_9_48_run( int** data, int iterator )
     max = numeric_limits<int>::min();
     min = numeric_limits<int>::max();
 
-
-
     for ( int i = 0; i < iterator; i++ ) {
         sum = 0;
 
@@ -79,6 +77,7 @@ int* Task_9_48_run( int** data, int iterator )
 
 
     for ( int i = 0; i < iterator; i++ ) {
+        result[i] = 0;
         result[i] += data[lineMax][i] * data[lineMin][i];
     }
 

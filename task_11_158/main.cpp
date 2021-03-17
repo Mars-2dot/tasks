@@ -4,28 +4,6 @@
 
 using namespace std;
 
-list<int> unique_list( list<int> data )
-{
-    // Не работает, после первого вхождения вложенного цикла, i может указывать на не существующий элемент
-//    for ( auto i = data.begin() ; i != data.end(); i++ ) {
-
-//        for ( auto j = ++i; j != data.end(); j++ ) {
-
-//            cout << *i << " " << *j << endl;
-
-//            if ( *i == *j ) {
-//                data.erase( j++ );
-//            }
-//        }
-
-//        --i;
-//    }
-
-
-
-    return data;
-}
-
 list<int> unique_list_sort( list<int> data )
 {
     data.sort();
@@ -34,12 +12,11 @@ list<int> unique_list_sort( list<int> data )
 
     for ( auto iter = data.begin(); iter != data.end(); ) {
 
-        cout << *iter << " " << *iter2 << endl;
+        if ( iter2 == data.end() ) {
+            break;
+        }
 
         if ( *iter == *iter2 ) {
-            if ( iter2 == data.end() ) {
-                break;
-            }
 
             data.erase( iter++ );
             iter2++;
