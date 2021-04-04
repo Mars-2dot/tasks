@@ -13,7 +13,16 @@
 #include <fstream>
 #include <filesystem>
 #include "random.h"
-
+#ifdef _WIN32
+#pragma comment ( lib, "Shlwapi.lib" )
+#ifdef _DEBUG
+#pragma comment ( lib, "googlebenchmark-build/src/Debug/benchmark.lib" )
+#pragma comment ( lib, "googlebenchmark-build/src/Debug/benchmark_main.lib" )
+#else
+#pragma comment ( lib, "benchmark.lib" )
+#pragma comment ( lib, "benchmark_main.lib" )
+#endif
+#endif
 #define RANGE 100
 
 void merge( int merged[], int lenD, int L[], int lenL, int R[], int lenR );

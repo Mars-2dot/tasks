@@ -21,7 +21,7 @@ ExternalProject_Get_Property(googletest binary_dir)
 if(UNIX)
 set(GTEST_LIBRARY_PATH ${binary_dir}/lib/${CMAKE_FIND_LIBRARY_PREFIXES}gtest.a)
 else ()
-set(GTEST_LIBRARY_PATH ${binary_dir}/lib/${CMAKE_FIND_LIBRARY_PREFIXES}/Debug/gtestd.lib)
+	set(GTEST_LIBRARY_PATH ${binary_dir}/lib/${CMAKE_FIND_LIBRARY_PREFIXES}Debug/gtestd.lib)
 endif ()
 
 set(GTEST_LIBRARY gtest)

@@ -4,8 +4,8 @@
 #include <fstream>
 #include <filesystem>
 
-#include <boost/program_options.hpp>
-#include <boost/filesystem/fstream.hpp>
+#include <F:/code/C++/tasks/build/task_13_1_45/boost/src/external_boost/boost/filesystem/fstream.hpp>
+#include <F:/code/C++/tasks/build/task_13_1_45/boost/src/external_boost/boost/program_options.hpp>
 
 namespace po = boost::program_options;
 namespace fs = boost::filesystem;
