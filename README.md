@@ -24,7 +24,3 @@ mkdir build && cd build
 cmake ..  
 msbuild .\ALL_BUILD.vcxproj
 ```
-<<<<<<< HEAD
-
-=======
->>>>>>> f2cc5100ebdb4e0fc88e42a6b8a5dd3551380066
