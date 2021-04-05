@@ -4,7 +4,7 @@
 
 using namespace std;
 
-list<int> unique_list_sort( list<int> data )
+list<int>& make_unique( list<int>& data )
 {
     data.sort();
     auto iter2 = data.begin();
@@ -17,12 +17,10 @@ list<int> unique_list_sort( list<int> data )
         }
 
         if ( *iter == *iter2 ) {
-
             data.erase( iter++ );
             iter2++;
 
         } else {
-
             iter2++;
             iter++;
         }
@@ -48,6 +46,6 @@ int main()
         data.push_back( Random::get( 1, 5 ) );
     }
 
-    unique_list_sort( data );
+    make_unique( data );
     return 0;
 }

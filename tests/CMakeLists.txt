@@ -4,18 +4,19 @@ project(tests LANGUAGES CXX)
 
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
+
 if(WIN32)
 set(CMAKE_CXX_FLAGS_RELEASE "${CMAKE_CXX_FLAGS_RELEASE} /MT")
 set(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS_DEBUG} /MTd")
 endif ()
+
 #find_package(GTest REQUIRED)
-#if(NOT GTest_FOUND)
+#if(NOT GTest_FOUND)${CMAKE_SOURCE_DIR}
 include(${CMAKE_SOURCE_DIR}/3rd/ExternalProjectGtests.cmake)
-include(GoogleTest)
+#include(GoogleTest)
 #endif()
-#find_package(GTest REQUIRED)
-include_directories(${GTEST_INCLUDE_DIR})
-enable_testing()
+
+include_directories(${GTEST_INCLUDE_DIRS})
 
 add_executable(tests
 	main.cpp

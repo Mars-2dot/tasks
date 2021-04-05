@@ -57,7 +57,6 @@ int* Task_9_48_run( int** data, int iterator )
     for ( int i = 0; i < iterator; i++ ) {
         sum = 0;
 
-
         for ( int j = 0; j < iterator; j++ ) {
             sum += data[i][j];
         }
@@ -74,7 +73,6 @@ int* Task_9_48_run( int** data, int iterator )
     }
 
     int* result = new int[ iterator ];
-
 
     for ( int i = 0; i < iterator; i++ ) {
         result[i] = 0;

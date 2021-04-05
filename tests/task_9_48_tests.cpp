@@ -2,16 +2,12 @@
 
 int* Task_9_48_run( int** data, int iterator )
 {
-
     int sum, max, min, lineMax = 0, lineMin = 0;
     max = std::numeric_limits<int>::min();
     min = std::numeric_limits<int>::max();
 
-
-
     for ( int i = 0; i < iterator; i++ ) {
         sum = 0;
-
 
         for ( int j = 0; j < iterator; j++ ) {
             sum += data[i][j];
@@ -30,8 +26,8 @@ int* Task_9_48_run( int** data, int iterator )
 
     int* result = new int[ iterator ];
 
-
     for ( int i = 0; i < iterator; i++ ) {
+        result[i] = 0;
         result[i] += data[lineMax][i] * data[lineMin][i];
     }
 

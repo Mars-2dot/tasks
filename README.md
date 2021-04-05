@@ -1,6 +1,7 @@
 # tasks
 ---  
-
+The test file for task 13.1.45 will be located in the build directory. 
+Usage example: "./tasks_13_1_45.exe -f ../file.txt -s test -r find" 
 # **Dependencies**  
 1) Googletest
 2) GoogleBenchmark
@@ -10,25 +11,17 @@
 ```sh 
 git clone https://github.com/Mars-2dot/tasks.git  
 cd tasks  
-git submodule update
 mkdir build && cd build  
 cmake ..  
 make  
 ```
 ## Win
-To work, you need to manually install googletest.
+If used msvc 
 ```sh
 git clone https://github.com/Mars-2dot/tasks.git  
 cd tasks
-git submodule update
 mkdir build && cd build
 cmake ..  
+msbuild .\ALL_BUILD.vcxproj
 ```
-Then build the dependency in any convenient way and install the project itself with the tasks.  
-```sh
-cd *root directory of repo*  
-mkdir build && cd build  
-cmake ..  
-```
-Build a project in any convenient way.
 
