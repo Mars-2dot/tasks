@@ -1,7 +1,7 @@
 #include "benchmark.h"
 #include <list>
 
-std::list<int> unique_list_sort( std::list<int> data )
+std::list<int>& make_unique( std::list<int>& data )
 {
     auto iter2 = data.begin();
     iter2++;
@@ -36,7 +36,7 @@ static void BM_Task_11_158_sort( benchmark::State& state )
     data.sort();
 
     for ( auto _ : state ) {
-        unique_list_sort( data );
+        make_unique( data );
     }
 
     state.SetComplexityN( state.range( 0 ) );

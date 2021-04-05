@@ -5,7 +5,7 @@ Usage example: "./tasks_13_1_45.exe -f ../file.txt -s test -r find"
 # **Dependencies**  
 1) Googletest
 2) GoogleBenchmark
-3) Boost::program_options
+3) Boost::program_options,filesystem
 # **Build**  
 ## Unix   
 ```sh 
@@ -24,4 +24,7 @@ mkdir build && cd build
 cmake ..  
 msbuild .\ALL_BUILD.vcxproj
 ```
+<<<<<<< HEAD
 
+=======
+>>>>>>> f2cc5100ebdb4e0fc88e42a6b8a5dd3551380066

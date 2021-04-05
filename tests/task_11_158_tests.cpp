@@ -1,6 +1,6 @@
 #include "tests.h"
 
-std::list<int> make_unique( std::list<int> data )
+std::list<int> &make_unique( std::list<int> &data )
 {
     data.sort();
     auto iter2 = data.begin();
