@@ -8,7 +8,6 @@ set( boost_LIB_DIR ${boost_INSTALL}/libs )
 set( BOOST_ROOT ${CMAKE_CURRENT_BINARY_DIR}/boost/src/external_boost )
 set (EXTRA_CMAKE_ARGS)
 list (APPEND EXTRA_CMAKE_ARGS
-	#  -DBOOST_ROOT=${boost_INSTALL}
   -DBoost_NO_SYSTEM_PATHS=ON)
 
 ExternalProject_Add( external_boost
@@ -25,8 +24,6 @@ ExternalProject_Add( external_boost
 	)
 set( boost_LIBRARY_SUFFIX .lib )
 include_directories(${CMAKE_CURRENT_BINARY_DIR}/boost/src/external_boost) 
-include_directories(${CMAKE_CURRENT_BINARY_DIR}/boost/src/external_boost/bin.v2/libs/program_options/build/msvc-14.2/release/address-model-64/link-static/runtime-link-static/threading-multi)
-include_directories(${CMAKE_CURRENT_BINARY_DIR}/boost/src/external_boost/bin.v2/libs/filesystem/build/msvc-14.2/release/address-model-64/link-static/runtime-link-static/threading-multi)
 link_directories(${CMAKE_CURRENT_BINARY_DIR}/boost/src/external_boost/stage/lib)
 
 add_library( boost::program_options  STATIC IMPORTED )

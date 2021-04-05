@@ -7,9 +7,7 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_CXX_FLAGS_RELEASE "/MD")
 set(CMAKE_CXX_FLAGS_DEBUG "/MDd")
 
-#set(BENCHMARK_PROJECT_LOCATION ../3rd/benchmark)
 include(${CMAKE_CURRENT_SOURCE_DIR}/../3rd/ExternalProjectGbenchmark.cmake)
-message("***************************************************************")
 add_executable(benchmark
    BM_task_16_8.cpp
    BM_Task_7_33.cpp

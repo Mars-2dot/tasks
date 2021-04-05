@@ -10,11 +10,7 @@ set(CMAKE_CXX_FLAGS_RELEASE "${CMAKE_CXX_FLAGS_RELEASE} /MT")
 set(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS_DEBUG} /MTd")
 endif ()
 
-#find_package(GTest REQUIRED)
-#if(NOT GTest_FOUND)${CMAKE_SOURCE_DIR}
 include(${CMAKE_SOURCE_DIR}/3rd/ExternalProjectGtests.cmake)
-#include(GoogleTest)
-#endif()
 
 include_directories(${GTEST_INCLUDE_DIRS})
 

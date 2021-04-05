@@ -10,7 +10,6 @@ ExternalProject_Add(googlebenchmark
   CONFIGURE_COMMAND ${CMAKE_COMMAND} -B ${CMAKE_CURRENT_BINARY_DIR}/googlebenchmark-build -S ${CMAKE_CURRENT_BINARY_DIR}/googlebenchmark-src -DBENCHMARK_DOWNLOAD_DEPENDENCIES=ON
   BUILD_COMMAND     ${CMAKE_COMMAND} --build ${CMAKE_CURRENT_BINARY_DIR}/googlebenchmark-build --config Debug
   INSTALL_COMMAND   ""
-  #TEST_COMMAND      --build-config Release
 )
 
 ExternalProject_Get_Property(googlebenchmark source_dir)
