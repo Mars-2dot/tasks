@@ -3,7 +3,6 @@ include( ExternalProject )
 set( boost_URL "https://sourceforge.net/projects/boost/files/boost/1.75.0/boost_1_75_0.tar.bz2" )
 set( boost_SHA1 "6109efd3bdd8b9220d7d85b5e125f7f28721b9a9" )
 set (EXTRA_CMAKE_ARGS)
-  -DBoost_NO_SYSTEM_PATHS=ON)
 
 ExternalProject_Add( external_boost
         PREFIX boost
@@ -24,7 +23,6 @@ set( boost_INSTALL ${CMAKE_CURRENT_BINARY_DIR}/3rd_part )
 set( boost_LIB_DIRS ${CMAKE_CURRENT_BINARY_DIR}/boost/src/external_boost/stage/lib )
 set( BOOST_ROOT ${CMAKE_CURRENT_BINARY_DIR}/boost/src/external_boost )
 set( boost_INCLUDE_DIRS ${CMAKE_CURRENT_BINARY_DIR}/boost/src/external_boost)
-list (APPEND EXTRA_CMAKE_ARGS
 add_library( boost::program_options  STATIC IMPORTED )
 set_property( TARGET boost::program_options PROPERTY IMPORTED_LOCATION ${boost_LIB_DIRS}/libboost_program_options.lib )
 set_property( TARGET boost::program_options PROPERTY INTERFACE_INCLUDE_DIRECTORIES ${boost_INCLUDE_DIRS} )
