@@ -1,6 +1,22 @@
+#include <list>
+using namespace std;
+
 #include "tests.h"
 
-std::list<int> &make_unique( std::list<int> &data )
+list<int>& make_unique_s( list<int>& sorted )
+{
+    for ( list<int>::iterator iter = sorted.begin(), iter2; iter != sorted.end(); ) {
+        for ( iter2 = iter, iter2++; iter2 != sorted.end(); )
+            if ( *iter == *iter2 )
+                iter2 = sorted.erase( iter2 );
+            else
+                break;
+        iter = iter2;
+    }
+
+    return sorted;
+}
+/*std::list<int> &make_unique( std::list<int> &data )
 {
     data.sort();
     auto iter2 = data.begin();
@@ -23,7 +39,7 @@ std::list<int> &make_unique( std::list<int> &data )
     }
 
     return data;
-}
+}*/
 
 TEST( Task_11_158_Array, run )
 {
@@ -33,18 +49,21 @@ TEST( Task_11_158_Array, run )
     data.push_back( 3 );
     data.push_back( 4 );
     data.push_back( 5 );
-    EXPECT_EQ( make_unique( data ), data );
+    data.sort();
+    EXPECT_EQ( make_unique_s( data ), data );
     data.clear();
     data.push_back( 1 );
     data.push_back( 2 );
     data.push_back( 2 );
     data.push_back( 4 );
     data.push_back( 2 );
+    data.sort();
     std::list<int> result;
     result.push_back( 1 );
     result.push_back( 2 );
     result.push_back( 4 );
-    EXPECT_EQ( make_unique( data ), result );
+    data.sort();
+    EXPECT_EQ( make_unique_s( data ), result );
     data.clear();
     result.clear();
     data.push_back( 1 );
@@ -53,5 +72,6 @@ TEST( Task_11_158_Array, run )
     data.push_back( 1 );
     data.push_back( 1 );
     result.push_back( 1 );
-    EXPECT_EQ( make_unique( data ), result );
+    data.sort();
+    EXPECT_EQ( make_unique_s( data ), result );
 }

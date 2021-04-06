@@ -4,33 +4,38 @@
 
 using namespace std;
 
-list<int>& make_unique( list<int>& data )
+list<int>& make_unique_s( list<int>& sorted )
 {
-    data.sort();
-    auto iter2 = data.begin();
-    iter2++;
+    /*auto iter2 = sorted.begin();
+    iter2++;*/
 
-    for ( auto iter = data.begin(); iter != data.end(); ) {
+    for ( list<int>::iterator iter = sorted.begin(), iter2; iter != sorted.end(); ) {
+        for ( iter2 = iter, iter2++; iter2 != sorted.end(); iter2++) {
+            if ( *iter == *iter2 )
+                sorted.erase( iter2 );
+            else
+                iter = iter2;
+        }
 
-        if ( iter2 == data.end() ) {
+        /*if ( iter2 == sorted.end() ) {
             break;
         }
 
         if ( *iter == *iter2 ) {
-            data.erase( iter++ );
+            sorted.erase( iter++ );
             iter2++;
 
         } else {
             iter2++;
             iter++;
-        }
+        }*/
     }
 
-    for ( auto i = data.begin(); i != data.end(); i++ ) {
+    for ( auto i = sorted.begin(); i != sorted.end(); i++ ) {
         cout << *i << endl;
     }
 
-    return data;
+    return sorted;
 }
 
 int main()
@@ -46,6 +51,7 @@ int main()
         data.push_back( Random::get( 1, 5 ) );
     }
 
-    make_unique( data );
+    data.sort();
+    make_unique_s( data );
     return 0;
 }
