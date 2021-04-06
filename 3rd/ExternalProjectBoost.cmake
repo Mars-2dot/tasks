@@ -23,6 +23,8 @@ set( boost_INSTALL ${CMAKE_CURRENT_BINARY_DIR}/3rd_part )
 set( boost_LIB_DIRS ${CMAKE_CURRENT_BINARY_DIR}/boost/src/external_boost/stage/lib )
 set( BOOST_ROOT ${CMAKE_CURRENT_BINARY_DIR}/boost/src/external_boost )
 set( boost_INCLUDE_DIRS ${CMAKE_CURRENT_BINARY_DIR}/boost/src/external_boost)
+list (APPEND EXTRA_CMAKE_ARGS
+  -DBoost_NO_SYSTEM_PATHS=ON)
 add_library( boost::program_options  STATIC IMPORTED )
 set_property( TARGET boost::program_options PROPERTY IMPORTED_LOCATION ${boost_LIB_DIRS}/libboost_program_options.lib )
 set_property( TARGET boost::program_options PROPERTY INTERFACE_INCLUDE_DIRECTORIES ${boost_INCLUDE_DIRS} )
