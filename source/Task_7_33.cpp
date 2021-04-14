@@ -1,5 +1,4 @@
-#include <iostream>
-#include "../random.h"
+#include "tasks.h"
 
 using namespace std;
 
@@ -42,7 +41,7 @@ void quickSort( int* data, int const len )
     }
 }
 
-bool Task_7_33_run_squared_new( int iterations, int data[] )
+bool Task_7_33_run_s( int iterations, int data[] )
 {
     for ( int i = 0 ; i < iterations; i++ ) {
         for ( int j = i + 1 ; j < iterations; j++ ) {
@@ -55,26 +54,29 @@ bool Task_7_33_run_squared_new( int iterations, int data[] )
     return false;
 }
 
-int main()
+bool Task_7_33_run( int* data, int iteration )
 {
-//    Проверить, все ли элементы массива различны.
-    const int iterations = 5;
-    int data[iterations];
+    bool result;
 
-//    data[0] = 1;
-//    data[1] = 2;
-//    data[2] = 3;
-//    data[3] = 4;
-//    data[4] = 5;
-
-    for ( int i = 0; i < iterations; i++ ) {
-        data[i] = Random::get( 1, 5 );
-        cout << data[i] << endl;
+    for ( int i = 0; i < iteration - 1; i++ ) {
+        if ( data[i] == data[1 + i ] ) {
+            result = true;
+            break;
+        }
     }
 
-    if ( Task_7_33_run_squared_new( iterations, data ) ) {
-        cout << "Coincidence" << endl;
-    } else {
-        cout << "Mismath" << endl;
+    return result;
+}
+
+bool Task_7_33_run_s_p( int data[] )
+{
+    for ( int* s = data, *t = data + sizeof( data ) / sizeof( int ); s < t; s++ ) {
+        for ( int* s1 = s + 1 ;  s1 < t; s1++ ) {
+            if ( *s == *s1 ) {
+                return false;
+            }
+        }
     }
+
+    return false;
 }

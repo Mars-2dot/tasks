@@ -1,28 +1,4 @@
 #include "benchmark.h"
-#include <list>
-
-std::list<int>& make_unique( std::list<int>& data )
-{
-    auto iter2 = data.begin();
-    iter2++;
-
-    for ( auto iter = data.begin(); iter != data.end(); ) {
-
-        if ( *iter == *iter2 ) {
-            data.erase( iter++ );
-            iter2++;
-
-            if ( iter2 == data.end() ) {
-                break;
-            }
-        } else {
-            iter2++;
-            iter++;
-        }
-    }
-
-    return data;
-}
 
 static void BM_Task_11_158_sort( benchmark::State& state )
 {
@@ -36,7 +12,7 @@ static void BM_Task_11_158_sort( benchmark::State& state )
     data.sort();
 
     for ( auto _ : state ) {
-        make_unique( data );
+        make_unique_s( data );
     }
 
     state.SetComplexityN( state.range( 0 ) );
@@ -59,7 +35,6 @@ static void BM_Task_11_158_sort_std( benchmark::State& state )
 
     state.SetComplexityN( state.range( 0 ) );
 }
-
 
 BENCHMARK( BM_Task_11_158_sort )->RangeMultiplier( 2 )->Range( 1 << 10, 1 << 18 )->Complexity();
 BENCHMARK( BM_Task_11_158_sort_std )->RangeMultiplier( 2 )->Range( 1 << 10, 1 << 18 )->Complexity();

@@ -4,8 +4,8 @@
 #include <fstream>
 #include <filesystem>
 
-#include <boost/filesystem/fstream.hpp>
-#include <boost/program_options.hpp>
+#include "boost/filesystem/fstream.hpp"
+#include "boost/program_options.hpp"
 
 namespace po = boost::program_options;
 namespace fs = boost::filesystem;
@@ -20,7 +20,6 @@ public:
 private:
     std::string  inputFilePath;
     std::string  search, reaplace;
-    bool readAndReplaceFile( std::string nameFile, std::string stringToSearch, std::string stringToReplace );
 };
 
 #endif // CLI_H

@@ -1,8 +1,4 @@
-#include <iostream>
-#include <limits>
-#include "../random.h"
-
-const int iterations = 3;
+#include "tasks.h"
 
 using namespace std;
 
@@ -79,28 +75,11 @@ int* Task_9_48_run( int** data, int iterator )
         result[i] += data[lineMax][i] * data[lineMin][i];
     }
 
-    cout << "Line number with the maximum sum of elements: " << ++lineMax << endl;
-    cout << "Line number with the minimun sum of elements: " << ++lineMin << endl;
-    cout << "Product of rows: " << endl;
+//    cout << "Line number with the maximum sum of elements: " << ++lineMax << endl;
+//    cout << "Line number with the minimun sum of elements: " << ++lineMin << endl;
+//    cout << "Product of rows: " << endl;
 
     return result;
 }
 
-int main()
-{
-    /* Задача 9.48
-     Дана квадратная матрица A(N×N). За один просмотр
-     найти строку с минимальной суммой элементов и строку с максимальной суммой элементов
-     и образовать произведение этих строк.
-      */
 
-    int** matrix = allocate( iterations, iterations );
-    fill( matrix, iterations, iterations );
-    cout << "Data: " << endl;
-    print( matrix, iterations, iterations );
-    cout << endl;
-    int* result = new int[iterations];
-    result = Task_9_48_run( matrix, iterations );
-    printRow( result, iterations );
-    return 0;
-}

@@ -7,6 +7,7 @@
 #include <fstream>
 #include <list>
 #include "gtest/gtest.h"
+#include "tasks.h"
 #include "random.h"
 
 #endif // TESTS_H

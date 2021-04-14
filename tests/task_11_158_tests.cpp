@@ -1,47 +1,7 @@
-#include <list>
+#include "tests.h"
 using namespace std;
 
-#include "tests.h"
-
-list<int>& make_unique_s( list<int>& sorted )
-{
-    for ( list<int>::iterator iter = sorted.begin(), iter2; iter != sorted.end(); ) {
-        for ( iter2 = iter, iter2++; iter2 != sorted.end(); )
-            if ( *iter == *iter2 )
-                iter2 = sorted.erase( iter2 );
-            else
-                break;
-        iter = iter2;
-    }
-
-    return sorted;
-}
-/*std::list<int> &make_unique( std::list<int> &data )
-{
-    data.sort();
-    auto iter2 = data.begin();
-    iter2++;
-
-    for ( auto iter = data.begin(); iter != data.end(); ) {
-
-        if ( *iter == *iter2 ) {
-            if ( iter2 == data.end() ) {
-                break;
-            }
-
-            data.erase( iter++ );
-            iter2++;
-
-        } else {
-            iter2++;
-            iter++;
-        }
-    }
-
-    return data;
-}*/
-
-TEST( Task_11_158_Array, run )
+TEST( Task_11_158_s, run )
 {
     std::list<int> data;
     data.push_back( 1 );
