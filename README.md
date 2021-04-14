@@ -6,7 +6,7 @@ Usage example: "./tasks_13_1_45.exe -f ../file.txt -s test -r find"
 1) Googletest
 2) GoogleBenchmark
 3) Boost::program_options,filesystem  
-If the dependencies are not found on the host, they will be downloaded and installed using the so-called "super-assembly" of cmake. In this case, after the first build, `you need to restart cmake`  so that the installed libraries at the build location are used in the future.
+If the dependencies are not found on the host, they will be downloaded and installed using the so-called "super-build" of cmake. In this case, after the first build, `you need to restart cmake`  so that the installed libraries at the build location are used in the future.
 # **Build**  
 ## Unix(In progress)   
 ```sh 
