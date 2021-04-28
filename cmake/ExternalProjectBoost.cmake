@@ -2,7 +2,7 @@ find_package(Threads REQUIRED)
 
 include( ExternalProject )
 
-set( boost_URL "https://sourceforge.net/projects/boost/files/boost/1.75.0/boost_1_75_0.tar.bz2" )
+set( boost_git "https://github.com/boostorg/boost.git" )
 
 set(TMP_PATH ${CMAKE_BINARY_DIR}/3rd/external_files/tmp)
 set(STAMP_PATH ${CMAKE_BINARY_DIR}/3rd/external_files/stamp)
@@ -23,7 +23,12 @@ ExternalProject_Add( external_boost
         TMP_DIR        ${TMP_PATH}
         STAMP_DIR      ${STAMP_PATH}
         LOG_DIR        ${LOG_PATH}
-        URL            ${boost_URL}
+        GIT_REPOSITORY ${boost_git}
+        GIT_TAG 	boost-1.75.0
+        GIT_SUBMODULES	""
+        GIT_SUBMODULES_RECURSE ON
+        GIT_SHALLOW ON
+        GIT_PROGRESS ON
         BUILD_IN_SOURCE 1
         DOWNLOAD_DIR  ${CMAKE_BINARY_DIR}/3rd/boost
         SOURCE_DIR    ${CMAKE_BINARY_DIR}/3rd/boost

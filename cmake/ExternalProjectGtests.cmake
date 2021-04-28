@@ -24,7 +24,8 @@ ExternalProject_Add( googletest
     TMP_DIR           ${TMP_PATH}
     STAMP_DIR         ${STAMP_PATH}
     LOG_DIR 	      ${LOG_PATH}
-    GIT_REPOSITORY https://github.com/google/googletest.git
+    GIT_REPOSITORY    https://github.com/google/googletest.git
+    CMAKE_ARGS        "-Dgtest_force_shared_crt=ON"
     UPDATE_COMMAND ""
     INSTALL_COMMAND ""
     LOG_DOWNLOAD ON

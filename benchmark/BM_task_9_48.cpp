@@ -17,4 +17,4 @@ static void BM_Task_9_48( benchmark::State& state )
 }
 
 
-BENCHMARK( BM_Task_9_48 )->RangeMultiplier( 2 )->Range( 1 << 10, 1 << 18 )->Complexity();
+BENCHMARK( BM_Task_9_48 )->RangeMultiplier( 2 )->Range( 1, 1 )->Complexity();

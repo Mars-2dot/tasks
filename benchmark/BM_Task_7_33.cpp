@@ -36,6 +36,6 @@ static void BM_Task_7_33_s_p( benchmark::State& state )
     state.SetComplexityN( state.range( 0 ) );
 }
 
-BENCHMARK( BM_Task_7_33_run )->RangeMultiplier( 2 )->Range( 1 << 10, 1 << 18 )->Complexity();
-BENCHMARK( BM_Task_7_33_s )->RangeMultiplier( 2 )->Range( 1 << 10, 1 << 18 )->Complexity();
-BENCHMARK( BM_Task_7_33_s_p )->RangeMultiplier( 2 )->Range( 1 << 10, 1 << 18 )->Complexity();
+BENCHMARK( BM_Task_7_33_run )->RangeMultiplier( 2 )->Range( 1, 1 )->Complexity();
+BENCHMARK( BM_Task_7_33_s )->RangeMultiplier( 2 )->Range( 1, 1 )->Complexity();
+BENCHMARK( BM_Task_7_33_s_p )->RangeMultiplier( 2 )->Range( 1, 1  )->Complexity();
