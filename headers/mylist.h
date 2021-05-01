@@ -90,11 +90,34 @@ struct myList {
             return;
         }
 
-        while ( first != last ) {
-            if ( first->next->val == first->val ) {
-                remove( first->val );
+        Node* prev = first;
+        Node* current = first;
+        Node* next = first->next;
+
+        while ( first ) {
+
+            if ( next == nullptr ) {
+                last = current;
+                break;
+            } else if ( current->val == next->val ) {
+                if ( current == first ) {
+                    Node* temp = first;
+                    first = next;
+                    current = next;
+                    prev = next;
+                    next = next->next;
+                    delete temp;
+                } else {
+                    Node* temp = current;
+                    current = current->next;
+                    prev->next = current;
+                    next = current->next;
+                    delete temp;
+                }
             } else {
-                first-> next = first->next;
+                prev = current;
+                current = current->next;
+                next = current->next;
             }
         }
     }

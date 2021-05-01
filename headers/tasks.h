@@ -14,8 +14,7 @@
 #include "random.h"
 #include "mylist.h"
 
-void test1();
-void test2();
+void test();
 void quickSort( int* data, int const len );
 void printRow( int* row, int iterations );
 void fill( int** matrix, int rows, int columns );
