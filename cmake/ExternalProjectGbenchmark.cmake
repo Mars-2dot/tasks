@@ -21,9 +21,9 @@ ExternalProject_Add(googlebenchmark
     STAMP_DIR         ${STAMP_PATH}
     LOG_DIR 	      ${LOG_PATH}
     GIT_REPOSITORY    https://github.com/google/benchmark.git
-    GIT_TAG           master
+    GIT_TAG           v1.5.0
     CONFIGURE_COMMAND ${CMAKE_COMMAND} -B ${GBENCHMARK_ROOT} -S ${GBENCHMARK_ROOT} -DBENCHMARK_DOWNLOAD_DEPENDENCIES=ON
-    BUILD_COMMAND     ${CMAKE_COMMAND} --build ${GBENCHMARK_ROOT} --config Debug
+    BUILD_COMMAND     ${CMAKE_COMMAND} --build ${GBENCHMARK_ROOT} --config Release
     INSTALL_COMMAND   ""
     BUILD_BYPRODUCTS  ${BENCHMARKLIB_PATH}
 )

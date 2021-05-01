@@ -31,7 +31,7 @@ target_link_libraries(tasks Boost::program_options  Boost::filesystem)
 
 add_executable(task_7_33 Task_7_33_main.cpp ../headers/random.h)
 add_executable(task_9_48  Task_9_48_main.cpp ../headers/tasks.h)
-add_executable(task_11_158  Task_11_158_main.cpp ../headers/tasks.h)
+add_executable(task_11_158  Task_11_158_main.cpp ../headers/tasks.h  ../headers/mylist.h)
 add_executable(task_13_1_45 ../headers/cli.h Task_13_1_45_main.cpp)
 
 target_link_libraries(task_7_33 tasks)

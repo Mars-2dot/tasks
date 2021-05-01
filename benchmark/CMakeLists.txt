@@ -9,11 +9,11 @@ include_directories(../headers)
 add_executable(GBenchmark
    BM_Task_7_33.cpp
    BM_Task_11_158.cpp
-   BM_task_9_48.cpp
    benchmark.cpp
    ../headers/benchmark.h
    ../headers/random.h
    ../headers/tasks.h
+   ../headers/mylist.h
     )
 find_package(benchmark
     PATHS

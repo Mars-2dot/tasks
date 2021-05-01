@@ -13,6 +13,7 @@ find_package(Boost COMPONENTS filesystem program_options
 add_executable(tests
         ../headers/tests.h
         ../headers/tasks.h
+        ../headers/mylist.h
         main.cpp
         task_7_33_tests.cpp
         task_13_1_45_tests.cpp
