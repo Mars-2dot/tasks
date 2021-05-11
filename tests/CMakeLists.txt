@@ -5,10 +5,10 @@ project(tests LANGUAGES CXX)
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-find_package(Boost COMPONENTS filesystem program_options
-    PATHS
-    ${CMAKE_BINARY_DIR}/dependencies/Boost/lib/cmake
-    )
+#find_package(Boost COMPONENTS filesystem program_options
+#    PATHS
+#    ${CMAKE_SOURCE_DIR}/dependencies/googletest/lib/cmake/GTest
+#    )
 
 add_executable(tests
         ../headers/tests.h
@@ -23,7 +23,7 @@ add_executable(tests
 
 find_package(GTest
     PATHS
-    ${CMAKE_BINARY_DIR}/dependencies/googletest/lib/cmake/GTest
+    ${CMAKE_SOURCE_DIR}/dependencies/googletest/lib/cmake/GTest
 )
 
 include_directories(${CMAKE_BINARY_DIR}/dependencies/Boost/include)

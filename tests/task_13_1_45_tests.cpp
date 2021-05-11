@@ -4,23 +4,21 @@ using namespace std;
 
 TEST( Task_13_1_45, fileTask )
 {
-    std::string stringCorrect = "", filePath = std::filesystem::current_path().generic_string() + "/";
-    std::string stringForTest = " ";
-//    readAndReplaceFile( "testFile.txt", "test", "Needs" );
-    std::ifstream out( filePath + "testFileAfter.txt" );
+    std::string result = "String", test = "testString";
+    std::string fileName = std::filesystem::current_path().generic_string() + "/fileTest.txt";
+    ofstream fileWrite;
+    ifstream fileRead;
+    fileWrite.open( fileName );
 
-    if ( out.is_open() ) {
-        std::string str;
-
-        while ( getline( out, str ) ) {
-            stringCorrect = str;
+    if ( fileWrite.is_open() ) {
+        for ( int i = 0; i < 10; i++ ) {
+            fileWrite << test ;
+            fileWrite << result ;
         }
-
-        out.close();
-        EXPECT_FALSE( stringCorrect == stringForTest );
-
-        readAndReplaceFile( "testFile.txt", "test", "needs" );
-
-        EXPECT_TRUE( stringCorrect == stringForTest );
+    } else {
+        EXPECT_TRUE( false );
     }
+
+    fileWrite.close();
+    EXPECT_TRUE( readAndReplaceFile( fileName, test, "" ) );
 }

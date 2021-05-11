@@ -9,11 +9,11 @@ set(STAMP_PATH ${CMAKE_BINARY_DIR}/3rd/external_files/stamp)
 set(LOG_PATH ${CMAKE_BINARY_DIR}/3rd/external_files/log)
 
 set( BOOST_ROOT ${CMAKE_BINARY_DIR}/3rd/boost )
-set( boost_INSTALL ${CMAKE_BINARY_DIR}/dependencies/Boost )
+set( boost_INSTALL ${CMAKE_SOURCE_DIR}/dependencies/Boost )
 set( boost_LIB_DIRS ${boost_INSTALL}/lib )
-set( Boost_INCLUDE_DIR ${boost_INSTALL}/include/boost-1_75)
-set( BOOST_PO_PATH ${boost_LIB_DIRS}/libboost_program_options-vc${MSVC_TOOLSET_VERSION}-mt-gd-x64-1_75.lib)
-set( BOOST_FS_PATH ${boost_LIB_DIRS}/libboost_filesystem-vc${MSVC_TOOLSET_VERSION}-mt-gd-x64-1_75.lib )
+set( Boost_INCLUDE_DIR ${boost_INSTALL}/include/boost-1_77)
+set( BOOST_PO_PATH ${boost_LIB_DIRS}/libboost_program_options-vc${MSVC_TOOLSET_VERSION}-mt-gd-x64-1_77.lib)
+set( BOOST_FS_PATH ${boost_LIB_DIRS}/libboost_filesystem-vc${MSVC_TOOLSET_VERSION}-mt-gd-x64-1_77.lib )
 
 file(MAKE_DIRECTORY ${Boost_INCLUDE_DIR}/boost/filesystem)
 file(MAKE_DIRECTORY ${boost_LIB_DIRS})
@@ -24,8 +24,8 @@ ExternalProject_Add( external_boost
         STAMP_DIR      ${STAMP_PATH}
         LOG_DIR        ${LOG_PATH}
         GIT_REPOSITORY ${boost_git}
-        GIT_TAG 	boost-1.75.0
-        GIT_SUBMODULES	""
+#        GIT_TAG 	boost-1.75.0
+#        GIT_SUBMODULES	""
         GIT_SUBMODULES_RECURSE ON
         GIT_SHALLOW ON
         GIT_PROGRESS ON
@@ -48,6 +48,7 @@ ExternalProject_Add( external_boost
         )
 
 include_directories(${Boost_INCLUDE_DIR})
+include_directories(${BOOST_ROOT})
 link_directories(${boost_LIB_DIRS})
 
 set(Boost::program_options boost)

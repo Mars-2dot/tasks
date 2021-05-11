@@ -122,6 +122,74 @@ struct myList {
         }
     }
 
+    void unique_s()
+    {
+        if ( is_empty() ) {
+            return;
+        }
+
+        Node* prev = first;
+        Node* next = first->next;
+        Node* it2 = first;
+
+        for ( Node* it = first; it != last; it = it->next ) {
+            if ( ( next == last ) && ( next->val == it->val ) ) {
+                Node* tempNext = next;
+                it2->next = nullptr;
+                next = it2;
+                last = it2;
+                last->next = nullptr;
+                delete tempNext;
+                return;
+            }
+
+            next = next->next;
+
+            for ( it2 = it2->next; it2 != last;  ) {
+                if ( ( it2->val == it->val ) ) {
+                    Node* temp = it2;
+                    prev->next = it2->next;
+
+                    if ( ( next == last ) && ( next->val == it->val ) && ( next != it2 ) ) {
+                        Node* tempNext = next;
+                        last = it2;
+                        it2->next = nullptr;
+                        next = it2;
+
+                        if ( first->next = last ) {
+//                            first->next = nullptr;
+                            last->next = nullptr;
+                            return;
+                        }
+
+                        delete  tempNext;
+                    } else {
+                        next = next->next;
+                        it2 = it2->next;
+                    }
+
+                    delete temp;
+                } else {
+                    if ( ( next == last ) && ( next->val == it->val ) ) {
+                        Node* tempNext = next;
+                        last = it2;
+                        next = it2;
+                        it2->next = nullptr;
+                        delete  tempNext;
+                    } else {
+                        next = next->next;
+                        it2 = it2->next;
+                        prev = prev->next;
+                    }
+                }
+            }
+
+            prev = it->next;
+            it2 = it->next;
+            next = it2->next;
+        }
+    }
+
     void remove( int val )
     {
         if ( is_empty() ) {

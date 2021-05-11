@@ -10,7 +10,7 @@ set(BENCHMARKLIB_PATH ${CMAKE_BINARY_DIR}/3rd/benchmark/src/Debug/benchmark.lib)
 set(BENCHMARKLIB_MAIN_PATH ${CMAKE_BINARY_DIR}/3rd/benchmark/src/Debug/benchmark_main.lib)
 set(GMOCK_INCLUDE_DIRS ${GBENCHMARK_ROOT}/googlemock/include)
 set(GBENCHMARK_INCLUDE_DIRS ${GBENCHMARK_ROOT}/include)
-set(BENCMARK_INSTALL_CMAKE ${CMAKE_BINARY_DIR}/dependencies/benchmark)
+set(BENCMARK_INSTALL_CMAKE ${CMAKE_SOURCE_DIR}/dependencies/benchmark)
 
 ExternalProject_Add(googlebenchmark
     PREFIX            ${GBENCHMARK_ROOT}
@@ -22,8 +22,9 @@ ExternalProject_Add(googlebenchmark
     LOG_DIR 	      ${LOG_PATH}
     GIT_REPOSITORY    https://github.com/google/benchmark.git
     GIT_TAG           v1.5.0
+    CMAKE_ARGS        "-DCMAKE_INSTALL_PREFIX=${BENCMARK_INSTALL_CMAKE}"
     CONFIGURE_COMMAND ${CMAKE_COMMAND} -B ${GBENCHMARK_ROOT} -S ${GBENCHMARK_ROOT} -DBENCHMARK_DOWNLOAD_DEPENDENCIES=ON
-    BUILD_COMMAND     ${CMAKE_COMMAND} --build ${GBENCHMARK_ROOT} --config Release
+    BUILD_COMMAND     ${CMAKE_COMMAND} --build ${GBENCHMARK_ROOT} --config Debug
     INSTALL_COMMAND   ""
     BUILD_BYPRODUCTS  ${BENCHMARKLIB_PATH}
 )

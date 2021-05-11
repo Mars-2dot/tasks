@@ -9,7 +9,7 @@ include_directories(../headers)
 
 find_package(Boost COMPONENTS filesystem program_options
     PATHS
-    ${CMAKE_BINARY_DIR}/dependencies/Boost/lib/cmake
+    ${CMAKE_SOURCE_DIR}/dependencies/Boost/lib/cmake
     )
 
 include_directories( ${Boost_INCLUDE_DIR})

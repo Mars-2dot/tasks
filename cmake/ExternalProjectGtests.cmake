@@ -10,7 +10,7 @@ set(GTEST_ROOT ${CMAKE_BINARY_DIR}/3rd/googletest)
 set(GTEST_INCLUDE_DIR ${GTEST_ROOT}/googletest/include)
 set(GMOCK_INCLUDE ${GTEST_ROOT}/googlemock/include)
 
-set(GTEST_INSTALL_CMAKE ${CMAKE_BINARY_DIR}/dependencies/googletest)
+set(GTEST_INSTALL_CMAKE ${CMAKE_SOURCE_DIR}/dependencies/googletest)
 set(GTEST_LIB ${GTEST_INSTALL_CMAKE}/lib/gtestd.lib)
 set(GTEST_LIB_MAIN ${GTEST_INSTALL_CMAKE}/lib/gtest_maind.lib)
 set(GMOCK_LIB ${GTEST_INSTALL_CMAKE}/lib/gmockd.lib)
@@ -26,6 +26,7 @@ ExternalProject_Add( googletest
     LOG_DIR 	      ${LOG_PATH}
     GIT_REPOSITORY    https://github.com/google/googletest.git
     CMAKE_ARGS        "-Dgtest_force_shared_crt=ON"
+    BUILD_COMMAND     ${CMAKE_COMMAND} --build ${GTEST_ROOT} --config Release
     UPDATE_COMMAND ""
     INSTALL_COMMAND ""
     LOG_DOWNLOAD ON

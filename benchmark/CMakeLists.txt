@@ -6,6 +6,7 @@ set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 include_directories(../headers)
+
 add_executable(GBenchmark
    BM_Task_7_33.cpp
    BM_Task_11_158.cpp
@@ -15,9 +16,10 @@ add_executable(GBenchmark
    ../headers/tasks.h
    ../headers/mylist.h
     )
+
 find_package(benchmark
     PATHS
-    ${CMAKE_BINARY_DIR}/dependencies/benchmark/lib/cmake/benchmark
+    ${CMAKE_SOURCE_DIR}/dependencies/benchmark/lib/cmake/benchmark
     )
 
 if (benchmark_FOUND)

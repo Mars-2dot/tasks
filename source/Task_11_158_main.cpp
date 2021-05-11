@@ -10,17 +10,14 @@ int main()
     */
     const int iterations = 5;
     list<int> data, data2;
+    myList l;
 
     for ( int i = 0; i < iterations; i++ ) {
-        data.push_back( Random::get( 1, 5 ) );
+        l.push_back( Random::get( 1, 5 ) );
     }
 
-    data.sort();
-    make_unique_new_s( data );
-
-    for ( auto i = data.begin(); i != data.end(); i++ ) {
-        cout << *i << endl;
-    }
+    l.unique_s();
+    l.print();
 
     return 0;
 }
