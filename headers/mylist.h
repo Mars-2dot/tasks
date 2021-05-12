@@ -139,6 +139,7 @@ struct myList {
                 next = it2;
                 last = it2;
                 last->next = nullptr;
+//                std::cout << "delete: " << tempNext->val << std::endl;
                 delete tempNext;
                 return;
             }
@@ -162,12 +163,14 @@ struct myList {
                             return;
                         }
 
+//                        std::cout << "delete: " << tempNext->val << std::endl;
                         delete  tempNext;
                     } else {
                         next = next->next;
                         it2 = it2->next;
                     }
 
+//                    std::cout << "delete: " << temp->val << std::endl;
                     delete temp;
                 } else {
                     if ( ( next == last ) && ( next->val == it->val ) ) {
@@ -175,6 +178,7 @@ struct myList {
                         last = it2;
                         next = it2;
                         it2->next = nullptr;
+//                        std::cout << "delete: " << tempNext->val << std::endl;
                         delete  tempNext;
                     } else {
                         next = next->next;

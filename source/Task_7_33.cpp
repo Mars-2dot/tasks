@@ -17,7 +17,7 @@ bool Task_7_33_run_s( int iterations, int data[] )
 
 bool Task_7_33_run( int* data, int iteration )
 {
-    bool result;
+    bool result = false;
 
     for ( int i = 0; i < iteration - 1; i++ ) {
         if ( data[i] == data[1 + i ] ) {
@@ -34,7 +34,7 @@ bool Task_7_33_run_s_p( int data[] )
     for ( int* s = data, *t = data + sizeof( data ) / sizeof( int ); s < t; s++ ) {
         for ( int* s1 = s + 1 ;  s1 < t; s1++ ) {
             if ( *s == *s1 ) {
-                return false;
+                return true;
             }
         }
     }

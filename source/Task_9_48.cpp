@@ -43,7 +43,7 @@ int** allocate( int row, int cal )
     return matrix;
 }
 
-int* Task_9_48_run( int** data, int iterator )
+int* Task_9_48_run( int* data[], int iterator )
 {
 
     int sum, max, min, lineMax = 0, lineMin = 0;
@@ -68,17 +68,18 @@ int* Task_9_48_run( int** data, int iterator )
         }
     }
 
+    cout << "Line number with the maximum sum of elements: " << ++lineMax << endl;
+    cout << "Line number with the minimun sum of elements: " << ++lineMin << endl;
+    cout << "Product of rows: " << endl;
     int* result = new int[ iterator ];
 
     for ( int i = 0; i < iterator; i++ ) {
         result[i] = 0;
         result[i] += data[lineMax][i] * data[lineMin][i];
+        cout << result[i] << " ";
     }
 
-//    cout << "Line number with the maximum sum of elements: " << ++lineMax << endl;
-//    cout << "Line number with the minimun sum of elements: " << ++lineMin << endl;
-//    cout << "Product of rows: " << endl;
-
+    cout << endl;
     return result;
 }
 

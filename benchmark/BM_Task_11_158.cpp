@@ -47,12 +47,17 @@ static void BM_Task_11_158_sort_stdList_big_data( benchmark::State& state )
 {
     std::list<int> list;
 
-    for ( int i = 0; i < 10000; i++ ) {
-        if ( i / 2 == 0 ) {
-            list.push_back( 1 );
-        } else {
-            list.push_back( 2 );
-        }
+    for ( int i = 0; i < 1000; i++ ) {
+        list.push_back( 1 );
+        list.push_back( 2 );
+        list.push_back( 1 );
+        list.push_back( 2 );
+        list.push_back( 1 );
+        list.push_back( 2 );
+        list.push_back( 1 );
+        list.push_back( 2 );
+        list.push_back( 1 );
+        list.push_back( 2 );
     }
 
     for ( auto _ : state ) {
@@ -93,12 +98,17 @@ static void BM_Task_11_158_sort_myList_big_data( benchmark::State& state )
 {
     myList list;
 
-    for ( int i = 0; i < 10000; i++ ) {
-        if ( i / 2 == 0 ) {
-            list.push_back( 1 );
-        } else {
-            list.push_back( 2 );
-        }
+    for ( int i = 0; i < 1000; i++ ) {
+        list.push_back( 1 );
+        list.push_back( 2 );
+        list.push_back( 1 );
+        list.push_back( 2 );
+        list.push_back( 1 );
+        list.push_back( 2 );
+        list.push_back( 1 );
+        list.push_back( 2 );
+        list.push_back( 1 );
+        list.push_back( 2 );
     }
 
     for ( auto _ : state ) {

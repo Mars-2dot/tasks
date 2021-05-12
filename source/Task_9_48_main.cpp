@@ -12,13 +12,22 @@ int main()
      и образовать произведение этих строк.
       */
 
-    int** matrix = allocate( iterations, iterations );
-    fill( matrix, iterations, iterations );
+    int* matrix[iterations] = {{}};
+
     cout << "Data: " << endl;
-    print( matrix, iterations, iterations );
     cout << endl;
-    int* result = new int[iterations];
-    result = Task_9_48_run( matrix, iterations );
-    printRow( result, iterations );
+
+    for ( int i = 0; i < iterations; i++ ) {
+        matrix[i] = new int [iterations];
+
+        for ( int j = 0; j < iterations; j++ ) {
+            matrix[i][j] = Random::get( 1, 5 ) ;
+            cout << matrix[i][j] << " ";
+        }
+
+        cout << endl;
+    }
+
+    Task_9_48_run( matrix, iterations );
     return 0;
 }
