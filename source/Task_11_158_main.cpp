@@ -13,6 +13,7 @@ int main()
     myList l;
 
     for ( int i = 0; i < iterations; i++ ) {
+<<<<<<< HEAD
         l.push_back( Random::get( 1, 1000 ) );
 //        l.print();
     }
@@ -25,6 +26,13 @@ int main()
 
 
     cout << "Result: " << endl;
+=======
+        l.push_back( Random::get( 1, 5 ) );
+        l.print();
+    }
+
+    cout << "Result: ";
+>>>>>>> b8a2a7ff79b426244500947065b4e146bdc4a416
     l.unique_s();
     l.print();
     cout <<  endl;

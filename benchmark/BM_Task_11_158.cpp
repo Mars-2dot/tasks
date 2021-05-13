@@ -97,8 +97,11 @@ static void BM_Task_11_158_sort_myList_big_data( benchmark::State& state )
         }
     }
 
+    int cout = 0;
+
     for ( auto _ : state ) {
         list.unique_s();
+        cout++;
     }
 }
 

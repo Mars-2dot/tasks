@@ -130,6 +130,7 @@ struct myList {
 
         for ( Node* it = first; it != last; it = it->next ) {
             Node* prev = it;
+<<<<<<< HEAD
 
             for ( Node* it2 = it->next; it2 != last; it2 = it2->next ) {
 CHECK_NEXT:
@@ -137,6 +138,11 @@ CHECK_NEXT:
                 if ( it2 == nullptr ) {
                     break;
                 }
+=======
+
+            for ( Node* it2 = it->next; it2 != last; it2 = it2->next ) {
+CHECK_NEXT:
+>>>>>>> b8a2a7ff79b426244500947065b4e146bdc4a416
 
                 if ( it2->val == it->val ) {
                     Node* temp = it2;
@@ -163,10 +169,13 @@ CHECK_NEXT:
                 }
             }
 
+<<<<<<< HEAD
             if ( it->next == nullptr ) {
                 break;
             }
 
+=======
+>>>>>>> b8a2a7ff79b426244500947065b4e146bdc4a416
             if ( ( it->next->val == it->val ) && ( it->next == last ) ) {
                 Node* temp = it->next;
                 it->next = nullptr;
