@@ -128,69 +128,52 @@ struct myList {
             return;
         }
 
-        Node* prev = first;
-        Node* next = first->next;
-        Node* it2 = first;
-
         for ( Node* it = first; it != last; it = it->next ) {
-            if ( ( next == last ) && ( next->val == it->val ) ) {
-                Node* tempNext = next;
-                it2->next = nullptr;
-                next = it2;
-                last = it2;
-                last->next = nullptr;
-//                std::cout << "delete: " << tempNext->val << std::endl;
-                delete tempNext;
-                return;
-            }
+            Node* prev = it;
 
-            next = next->next;
+            for ( Node* it2 = it->next; it2 != last; it2 = it2->next ) {
+CHECK_NEXT:
 
-            for ( it2 = it2->next; it2 != last;  ) {
-                if ( ( it2->val == it->val ) ) {
+                if ( it2 == nullptr ) {
+                    break;
+                }
+
+                if ( it2->val == it->val ) {
                     Node* temp = it2;
                     prev->next = it2->next;
-
-                    if ( ( next == last ) && ( next->val == it->val ) && ( next != it2 ) ) {
-                        Node* tempNext = next;
-                        last = it2;
-                        it2->next = nullptr;
-                        next = it2;
-
-                        if ( first->next = last ) {
-//                            first->next = nullptr;
-                            last->next = nullptr;
-                            return;
-                        }
-
-//                        std::cout << "delete: " << tempNext->val << std::endl;
-                        delete  tempNext;
-                    } else {
-                        next = next->next;
-                        it2 = it2->next;
-                    }
-
-//                    std::cout << "delete: " << temp->val << std::endl;
+                    it2 = it2->next;
+                    delete  temp;
+                    goto CHECK_NEXT;
+                } else if ( it2->next == last && it2->next->val == it->val ) {
+                    Node* temp = it2->next;
+                    it2->next = nullptr;
+                    last = it2;
                     delete temp;
-                } else {
-                    if ( ( next == last ) && ( next->val == it->val ) ) {
-                        Node* tempNext = next;
-                        last = it2;
-                        next = it2;
-                        it2->next = nullptr;
-//                        std::cout << "delete: " << tempNext->val << std::endl;
-                        delete  tempNext;
-                    } else {
-                        next = next->next;
-                        it2 = it2->next;
-                        prev = prev->next;
+                    prev = it;
+                    break;
+                } else if ( it2->next == nullptr ) {
+                    if ( it->next == last ) {
+                        return;
                     }
+
+                    prev = it;
+                    break;
+                } else {
+                    prev = prev->next;
                 }
             }
 
-            prev = it->next;
-            it2 = it->next;
-            next = it2->next;
+            if ( it->next == nullptr ) {
+                break;
+            }
+
+            if ( ( it->next->val == it->val ) && ( it->next == last ) ) {
+                Node* temp = it->next;
+                it->next = nullptr;
+                last = it;
+                delete temp;
+                return;
+            }
         }
     }
 
