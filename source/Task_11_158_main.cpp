@@ -14,8 +14,10 @@ int main()
 
     for ( int i = 0; i < iterations; i++ ) {
         l.push_back( Random::get( 1, 5 ) );
+        l.print();
     }
 
+    cout << "Result: ";
     l.unique_s();
     l.print();
 
