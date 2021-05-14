@@ -71,6 +71,8 @@ int* Task_9_48_run( int* data[], int iterator )
     cout << "Line number with the maximum sum of elements: " << ++lineMax << endl;
     cout << "Line number with the minimun sum of elements: " << ++lineMin << endl;
     cout << "Product of rows: " << endl;
+    lineMax--;
+    lineMin--;
     int* result = new int[ iterator ];
 
     for ( int i = 0; i < iterator; i++ ) {
