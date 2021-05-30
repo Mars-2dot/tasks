@@ -27,5 +27,5 @@ TEST( Task9_48, run )
         productRow += result[i];
     }
 
-    ASSERT_EQ( productRow, 6 );
+    ASSERT_EQ( productRow, 18 );
 }

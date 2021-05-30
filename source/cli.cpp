@@ -1,5 +1,7 @@
 #include "cli.h"
 #include "tasks.h"
+#include <locale>
+#include <codecvt>
 
 cli::cli( int argc, char* argv[] )
 {
@@ -8,8 +10,7 @@ cli::cli( int argc, char* argv[] )
     ( "input-file,f",  po::value<std::string>( &inputFilePath )->composing(),
       "set input file path" )
     ( "search,s", po::value<std::string>( &search ), "word to search" )
-    ( "reaplace,r",  po::value<std::string>( &reaplace ), "word to reaplace" )
-    ;
+    ( "reaplace,r",  po::value<std::string>( &reaplace ), "word to reaplace" );
     po::store( po::parse_command_line( argc, argv, optionsDescriptions ), map );
     po::notify( map );
 }
@@ -21,32 +22,35 @@ int cli::exec()
         return 1;
     } else if ( map.size() == 3 && map.count( "search" ) && map.count( "reaplace" ) && map.count( "input-file" ) ) {
         std::string parametrs[3];
+//        std::string_convert<std::codecvt_utf8_utf16<wchar_t>> converter;
 
         for ( const auto& option : map ) {
             auto& value = option.second.value();
             auto v = boost::any_cast<std::string>( &value );
 
             if ( option.first == "search" ) {
-                parametrs[1] = std::string( v->c_str() );
+                parametrs[1] =  std::string( v->c_str() ) ;
             }
 
             if ( option.first == "reaplace" ) {
-                parametrs[2] = std::string( v->c_str() );
+                parametrs[2] =  std::string( v->c_str() ) ;
             }
 
             if ( option.first == "input-file" ) {
-                parametrs[0] = std::string( v->c_str() );
+                parametrs[0] =  std::string( v->c_str() )  ;
             }
         }
 
-        readAndReplaceFile( parametrs[0], parametrs[1], parametrs[2] );
+        readAndReplaceFile(
+            parametrs[0],
+            parametrs[1],
+            parametrs[2]
+        );
         return 0;
     } else {
         std::cout << "Please, use --help option for information" << std::endl;
         return 1;
     }
-
-    return 0;
 }
 
 

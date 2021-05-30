@@ -1,7 +1,24 @@
 #include "tasks.h"
+#include <fcntl.h>
+#include <io.h>
+#include <locale>
+#ifdef _WIN32
+    #include <windows.h>
+#endif
 
-bool readAndReplaceFile( std::string nameFile, std::string stringToSearch, std::string stringToReplace )
+bool readAndReplaceFile( std::string nameFile, std::string search, std::string replace )
 {
+//    _setmode( _fileno( stdout ), _O_U16TEXT );
+#ifdef _WIN32
+    SetConsoleCP( 1251 );
+    SetConsoleOutputCP( 1251 );
+#endif
+//    SetConsoleCP( 65001 );
+//    SetConsoleOutputCP( 65001 );
+//    setlocale( LC_CTYPE, "Russia" );
+//    system( "chcp 65001" );
+
+
     std::ifstream fileStreamRead( nameFile );
     std::string line;
     size_t index;
@@ -9,7 +26,7 @@ bool readAndReplaceFile( std::string nameFile, std::string stringToSearch, std::
     auto FileSize = std::filesystem::file_size( nameFile );
 
     if ( fileStreamRead.is_open() ) {
-        if ( FileSize > 1024 ) { //134217728
+        if ( FileSize > 1024 ) { //134217728 // checking the file size, if larger, then reading by blocks until the file ends
             while ( !fileStreamRead.eof() ) {
                 for ( int i = 0; i < 1024; i++ ) {
                     fileStreamRead.get( ch );
@@ -21,10 +38,11 @@ bool readAndReplaceFile( std::string nameFile, std::string stringToSearch, std::
                     line += ch;
                 }
 
-                if ( line.find( stringToSearch ) < line.size() ) {
-                    index = line.find( stringToSearch );
-                    line.replace( index, stringToSearch.size(), stringToReplace );
-                    std::cout << "The replacement, the result: " + line << std::endl;
+                if ( line.find( search ) < line.size() ) {
+                    index = line.find( search );
+                    line.replace( index, search.size(), replace );
+                    std::cout << "LThe replacement, the result: ";
+                    std::cout << line << std::endl;
                 }
 
                 line.clear();
@@ -32,10 +50,11 @@ bool readAndReplaceFile( std::string nameFile, std::string stringToSearch, std::
         } else {
             while ( getline( fileStreamRead, line ) ) {
 
-                if ( line.find( stringToSearch ) ) {
-                    index = line.find( stringToSearch );
-                    line.replace( index, stringToSearch.size(), stringToReplace );
-                    std::cout << "The replacement, the result: " + line << std::endl;
+                if ( line.find( search ) ) {
+                    index = line.find( search );
+                    line.replace( index, search.size(), replace );
+                    std::cout << "The replacement, the result: " << std::endl;
+                    std::cout << line << std::endl;
                     break;
                 }
             }

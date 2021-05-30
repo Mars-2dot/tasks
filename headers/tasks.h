@@ -15,7 +15,6 @@
 #include "mylist.h"
 
 void printRow( int* row, int iterations );
-bool Task_7_33_run_squared_new( int iterations, int data[] );
 bool Task_7_33_run( int* data, int iteration );
 bool Task_7_33_run_s( int iterations, int data[] );
 bool Task_7_33_run_s_p( int data[] );

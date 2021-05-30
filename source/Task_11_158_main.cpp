@@ -9,15 +9,15 @@ int main()
     т.е. в массиве должны остаться только различные элементы.
     */
     const int iterations = 10;
-    myList l;
+    myList* l = new myList;
+    Random::list_recurent( l, iterations, 0, 5 );
 
-    for ( int i = 0; i < iterations; i++ ) {
-        l.push_back( Random::get( 1, 10 ) );
-    }
+    cout << "Source: ";
+    l->print();
 
     cout << "Result: ";
-    l.unique_s();
-    l.print();
+    l->unique_s();
+    l->print();
     cout << "Finish" << endl;
 
     return 0;

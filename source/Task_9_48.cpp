@@ -77,7 +77,11 @@ int* Task_9_48_run( int* data[], int iterator )
 
     for ( int i = 0; i < iterator; i++ ) {
         result[i] = 0;
-        result[i] += data[lineMax][i] * data[lineMin][i];
+
+        for ( int j = 0; j < iterator; j++ ) {
+            result[i] += data[lineMax][i] * data[lineMin][j];
+        }
+
         cout << result[i] << " ";
     }
 

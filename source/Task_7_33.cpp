@@ -41,17 +41,3 @@ bool Task_7_33_run_s_p( int data[] )
 
     return false;
 }
-
-
-bool Task_7_33_run_squared_new( int iterations, int data[] )
-{
-    for ( int i = 0 ; i < iterations; i++ ) {
-        for ( int j = i + 1 ; j < iterations; j++ ) {
-            if ( data[i] == data[j] ) {
-                return true;
-            }
-        }
-    }
-
-    return false;
-}

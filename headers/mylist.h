@@ -203,6 +203,43 @@ CHECK_NEXT:
         delete fast;
     }
 
+    void clear()
+    {
+        if ( is_empty() ) {
+            return;
+        }
+
+        Node* p;
+
+        while ( first != last ) {
+            p = first;
+            first = first->next;
+            delete p;
+        }
+
+        p = last;
+        last = nullptr;
+        first = nullptr;
+        delete  p;
+    }
+
+    int size()
+    {
+        if ( is_empty() ) {
+            return 0;
+        }
+
+        int size = 0;
+        Node* p = first;
+
+        while ( p != last ) {
+            size++;
+            p = p->next;
+        }
+
+        return ++size;
+    }
+
     Node* operator[] ( const int index )
     {
         if ( is_empty() ) {
