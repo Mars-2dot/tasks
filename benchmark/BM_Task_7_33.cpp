@@ -1,12 +1,12 @@
 #include "benchmark.h"
 
-static void BM_Task_7_33_s( benchmark::State& state )
+static void BM_Task_7_33( benchmark::State& state )
 {
     const int iterations = 5;
     int data[] = {1, 2, 3, 4, 4};
 
     for ( auto _ : state ) {
-        Task_7_33_run_s( iterations,  data );
+        Task_7_33_run( data, iterations );
     }
 }
 
@@ -19,5 +19,5 @@ static void BM_Task_7_33_s_p( benchmark::State& state )
     }
 }
 
-BENCHMARK( BM_Task_7_33_s );
+BENCHMARK( BM_Task_7_33 );
 BENCHMARK( BM_Task_7_33_s_p );

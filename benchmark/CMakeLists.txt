@@ -10,24 +10,16 @@ include_directories(../headers)
 add_executable(GBenchmark
    BM_Task_7_33.cpp
    BM_Task_11_158.cpp
+   BM_task_9_48.cpp
    benchmark.cpp
    ../headers/benchmark.h
    ../headers/random.h
    ../headers/tasks.h
    ../headers/mylist.h
+   ../headers/generate.h
     )
 
-find_package(benchmark
-    PATHS
-    ${CMAKE_SOURCE_DIR}/dependencies/benchmark/lib/cmake/benchmark
-    )
-
-if (benchmark_FOUND)
-        message("***benchmark found***")
-else()
-        message("***benchmark not found***")
-        include(${CMAKE_CURRENT_SOURCE_DIR}/../cmake/ExternalProjectGbenchmark.cmake)
-endif()
-
-target_link_libraries(GBenchmark benchmark::benchmark tasks
+target_link_libraries(GBenchmark
+    "${benchmark_LIBRARIES}"
+    tasks
  Shlwapi)

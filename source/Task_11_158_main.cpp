@@ -8,16 +8,17 @@ int main()
     Удалить из массива все повторяющиеся элементы, оставив их первые вхождения,
     т.е. в массиве должны остаться только различные элементы.
     */
-    const int iterations = 10;
-    myList* l = new myList;
-    Random::list_recurent( l, iterations, 0, 5 );
+    const int size = 10;
+    myList* list = new myList;
+
+    Generate::list_recurent( list, size, 0, 5 );
 
     cout << "Source: ";
-    l->print();
+    list->print();
 
     cout << "Result: ";
-    l->unique_s();
-    l->print();
+    list->unique_s();
+    list->print();
     cout << "Finish" << endl;
 
     return 0;

@@ -3,6 +3,13 @@
 #include <iostream>
 #include <fstream>
 #include <filesystem>
+#include <locale>
+#include <codecvt>
+#include <fcntl.h>
+#include <io.h>
+#include <string>
+
+#include "tasks.h"
 
 #include "boost/filesystem/fstream.hpp"
 #include "boost/program_options.hpp"
@@ -18,7 +25,7 @@ public:
     cli( int argc, char* argv[] );
     int exec();
 private:
-    std::string  inputFilePath;
+    std::string  inputFilePath, outputFilePath;
     std::string  search, reaplace;
 };
 

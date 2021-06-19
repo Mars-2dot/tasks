@@ -2,30 +2,21 @@
 
 TEST( Task9_48, run )
 {
-    int** data;
-    int testIterators = 3;
-    data = new int* [testIterators];
+    int* data;
+    int iterations = 3;
+    data = allocate( iterations, iterations );
 
-    for ( int i = 0; i < testIterators; i++ ) {
-        data[i] = new int[testIterators];
-    }
-
-    for ( int i = 0; i < testIterators; i++ ) {
-        for ( int j = 0; j < testIterators; j++ ) {
-            data[i][j] = 1;
+    for ( int i = 0; i < iterations; i++ ) {
+        for ( int j = 0; j < iterations; j++ ) {
+            data[i * iterations + j] = 1;
         }
     }
 
-    for ( int i = 0; i < testIterators; i++ ) {
-        data[0][i] = 2;
+    for ( int i = 0; i < iterations; i++ ) {
+        data[i * 1 + iterations] = 2;
     }
 
-    int* result = Task_9_48_run( data, testIterators );
-    int productRow = 0;
+    int result = Task_9_48_run( data, iterations );
 
-    for ( int i = 0; i < testIterators; i++ ) {
-        productRow += result[i];
-    }
-
-    ASSERT_EQ( productRow, 18 );
+    ASSERT_EQ( result, 6 );
 }

@@ -59,8 +59,8 @@ struct is_uniform_list {
 
 class Random
 {
-    template <class T> using IntDist = std::uniform_int_distribution<T>;
-    template <class T> using RealDist = std::uniform_real_distribution<T>;
+    template <class T> using m_IntDist = std::uniform_int_distribution<T>;
+    template <class T> using m_RealDist = std::uniform_real_distribution<T>;
 
 public:
     template <class T>
@@ -71,7 +71,7 @@ public:
             std::swap( from, to );
         }
 
-        IntDist<T> dist{from, to};
+        m_IntDist<T> dist{from, to};
         return dist( instance().engine() );
     }
 
@@ -83,70 +83,13 @@ public:
             std::swap( from, to );
         }
 
-        RealDist<T> dist{from, to};
+        m_RealDist<T> dist{from, to};
         return dist( instance().engine() );
-    }
-
-    template <class T1, typename  T2>
-    static typename std::enable_if<details::is_uniform_pointer<T2>::value, T2>::type array(
-        T2 array,
-        int size,
-        T1 from = std::numeric_limits<T1>::min(),
-        T1 to = std::numeric_limits<T1>::max() )
-    {
-        for ( int i = 0; i < size; i++ ) {
-            array[i] = get( from, to );
-        }
-
-        return array;
-    }
-
-    template <class T1, typename  T2>
-    static typename std::enable_if<details::is_uniform_list<T2>::value, T2>::type list(
-        T2 list,
-        int size,
-        T1 from = std::numeric_limits<T1>::min(),
-        T1 to = std::numeric_limits<T1>::max() )
-    {
-        for ( int i = 0; i < size; i++ ) {
-            list->push_back( get( from, to ) );
-        }
-
-        return list;
-    }
-
-    template <class T1, typename  T2>
-    static typename std::enable_if<details::is_uniform_list<T2>::value, T2>::type list_recurent(
-        T2 list,
-        int size,
-        T1 from = std::numeric_limits<T1>::min(),
-        T1 to = std::numeric_limits<T1>::max() )
-    {
-        int recurrent = get( 0, size );
-        T1 temp_g = ( T1 )0;
-
-        for ( int i = 0; i < size; i++ ) {
-            T1 temp = get( from, to );
-            list->push_back( temp );
-
-            if ( recurrent == i ) {
-                if ( temp_g == ( T1 )0 ) {
-                    temp_g = temp;
-                } else {
-                    list->push_back( temp_g );
-                    temp_g = ( T1 )0;
-                }
-
-                recurrent = get( i, size );
-            }
-        }
-
-        return list;
     }
 
     std::mt19937& engine()
     {
-        return mt;
+        return m_mt;
     }
 
 protected:
@@ -157,10 +100,10 @@ protected:
     }
 
 private:
-    std::random_device randomDevice;
-    std::mt19937 mt;
+    std::random_device m_randomDevice;
+    std::mt19937 m_mt;
 
-    Random() : mt( randomDevice() ) {}
+    Random() : m_mt( m_randomDevice() ) {}
     ~Random() {}
     Random( const Random& ) = delete;
     Random& operator = ( const Random& ) = delete;

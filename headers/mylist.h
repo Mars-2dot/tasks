@@ -2,6 +2,7 @@
 #define MYLIST_H
 
 #include <iostream>
+#include <list>
 
 struct Node {
     int val;
@@ -15,6 +16,11 @@ struct myList {
     Node* last;
 
     myList() : first( nullptr ), last( nullptr ) {}
+
+    ~myList()
+    {
+        this->clear();
+    }
 
     bool is_empty()
     {
@@ -257,6 +263,12 @@ CHECK_NEXT:
         }
 
         return p;
+    }
+    void operator= ( std::list<int>* stdList )
+    {
+        for ( auto i = stdList->begin(); i != stdList->end(); i++ ) {
+            this->push_back( *i );
+        }
     }
 };
 
